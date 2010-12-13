@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title><%= h(yield(:title) || "iScrum") %></title>
+    <%= stylesheet_link_tag 'application' %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+    
+    <div id="container" style="padding-right:10px;">
+      <div class="top_stuff" style="width:98%;">
+      <div id="links">
+
+      <span style="float:right">
+
+          <% if user_signed_in? %>
+<%= link_to_unless_current "Dashboard", root_path, :class => "blue_hover"  %> |
+            <%= link_to_unless_current "My Profile", "/users/#{current_user.id}", :class => "blue_hover" %> |
+            <%= link_to_unless_current "Help", "#", :class => "blue_hover" %> |
+      <%= link_to_unless_current "Sign Out", destroy_user_session_path, :class => "blue_hover" %>
+      <% else %>
+        <%= link_to_unless_current "Sign In", new_user_session_path, :class => "blue_hover" %> | <%= link_to_unless_current "Register", new_user_registration_path, :class => "blue_hover" %>
+      <% end %>
+      </span>
+        </div><!--End of div links-->
+        <p style="margin-top:-3px"><span style="margin-right:10px"><select><option>Project 1</option><option selected>Project 2</option></select>  </span><%= link_to "iScrum", root_path, :class => "home_link" %></p>
+      </div><!--End of div top_stuff-->
+      
+    
+
+      
+      <%#- if show_title? -%>
+        <!--<h1 style="color:brown; border:2px solid green;"><%#=h yield(:title) %></h1>-->
+	<%#- end -%>
+      <%- flash.each do |name, msg| -%>
+          <%- unless msg.blank? -%>
+                 <%= content_tag :div, "#{msg}", :id => "flash_#{name}" %>
+          <%- end -%>
+        <%- end -%>
+     <div id="yield" style="padding-left:10px;padding-bottom:20px;"> 
+      <%= yield %>
+     </div><!--End of div yield-->
+    </div><!--End of div container-->
+  </body>
+</html>

@@ -1,0 +1,126 @@
+<% content_for(:title,"Welcome Home") %>
+
+<!--< %unless logged_in? %><h2>You are currently not logged in.</h2>-->
+<!--< % else %>-->
+  <!--<h2>You are logged in currently. Create a Story now - < %= link_to "Add a Story", new_story_path, :class => "blue_hover" %></h2>-->
+<!--< % end %>-->
+<!--<p>< %= link_to "Login", "/login", :class => "blue_hover" %> or < %= link_to "Register", "/signup", :class => "blue_hover" %></p>-->
+
+<div class="dashboard_page">
+  <h1>Dashboard</h1>
+
+  <div class="content_section right_column" id="activity_feed">
+    <div id="activity_feed_items">
+
+  <h2><span>Activity Feed</span><a href="https://www.pivotaltracker.com/user_activities/2ed74eeeee46622b2d71ce42ec91db13" class="activity_feed_subscribe_link">subscribe</a></h2>
+  <ul id="activity_feed_item_list" class="list">
+
+  </ul>
+</div>
+
+  </div><!--End of div class content_section right_column-->
+
+  <div class="content_section left_column" id="my_projects">
+
+    <span class='inner'>
+
+        <div id="my_projects_list">
+          <h2><a href="#" id="create_new_project_button">Create Project</a>
+            <span>My Projects</span></h2>
+<div class="project_list">
+<% @projects.each do |project| %>
+    <div class="project_box" onclick="window.location.pathname='/projects/<%= project.id %>'">
+      <div class="project_title"><%= project.name.upcase %></div>
+      <div class="velocity_box">
+
+        <div class="project_box_hover_links">
+
+            <a class="hover_link" href="/projects/<%= project.id %>/overview">overview</a>
+
+            <a class="hover_link" href="/projects/<%= project.id %>/settings">settings</a>
+
+            <a class="hover_link" href="/projects/<%= project.id %>/memberships">members</a>
+
+        </div>
+        <div class="caption" title=""></div>
+
+
+        <div title="Velocity: 4, Volatility: 0%" class="velocity"><%= project.initial_velocity %></div>
+      </div>
+    </div>
+  <% end %>
+
+
+
+  <a href="/projects" class="show_all button white">Show All My Projects</a>
+</div>
+
+        </div><!--End of div id my_projects_list-->
+
+    </span>
+  </div><!--End of div content_section left_column-->
+  <div class="clear"></div>
+
+  <!--End of div class content_section_news-->
+  <div class="clear"></div>
+</div><!--End of div dashboard_page-->
+<br/>
+
+<%#*<div class="new_project_popup" id="new_project_popup" style="display:none">%>
+  <%#*<div class="popup_head">%>
+  <%#*<img src="/images/v4/application/icons/close_button_overlay.png" class="close_image"/>%>
+
+  <%#*<div class="inner">%>
+
+    <%#*<form action="/projects" method="post" onsubmit="$('179746580_add').style.visibility='visible'; new Ajax.Request('/projects', {asynchronous:true, evalScripts:true, onLoaded:function(request){$('179746580_add').style.visibility='hidden'}, parameters:Form.serialize(this)}); return false;">%>
+      <%#*<div class="heading">%>
+        <%#*<input id="add_project_button" name="commit" type="submit" value="Create Project" />%>
+        <%#*<img alt="Spinner_adding" class="spinner" id="179746580_add" src="/images/v4/application/icons/spinner_adding.gif?1291958189" style="visibility:hidden" />%>
+        <%#*<h3>Create New Project</h3>%>
+      <%#*</div>%>
+      <%#*<div class="popup_content">%>
+
+        <%#*<ul>%>
+          <%#*<li>%>
+            <%#*<label for="project_name">Project Name</label>%>
+            <%#*<input class="project_name_field" id="project_name" name="project[name]" size="30" type="text" />%>
+          <%#*</li>%>
+
+
+
+            <%#*<li>%>
+              <%#*<div id="select_an_existing_account">%>
+                <%#*<label for="project_account_id">Account</label><select id="project_account_id" name="project[account_id]"><option value="186959">Nitin Rajora</option></select><span class="account_input_toggle">or, <a href="#" onclick="      $('create_a_new_account').toggleClassName('hidden');%>
+      <%#*$('select_an_existing_account').toggleClassName('hidden');%>
+      <%#*$('project_account_id').value = '';%>
+      <%#*$('project_account_name').value = '';%>
+<%#*; return false;">create new account</a></span>%>
+
+              <%#*</div>%>
+
+                <%#*<div id="create_a_new_account" class="hidden">%>
+                  <%#*<label for="project_account_name">Account Name</label><input id="project_account_name" name="project[account_name]" size="30" type="text" />%>
+                  <%#*<span class="account_input_toggle">or, <a href="#" onclick="      $('create_a_new_account').toggleClassName('hidden');%>
+      <%#*$('select_an_existing_account').toggleClassName('hidden');%>
+      <%#*$('project_account_id').value = '';%>
+      <%#*$('project_account_name').value = '';%>
+<%#*; return false;">choose an existing account</a></span>%>
+                <%#*</div>%>
+
+            <%#*</li>%>
+            <%#*<input id="show_account_options" name="show_account_options" type="hidden" value="true" />%>
+
+
+
+
+          <%#*<div id="add_project_flash"></div>%>
+        <%#*</ul>%>
+      <%#*</div>%>
+    <%#*</form>%>
+  <%#*</div>%>
+<%#*</div>%>
+<%#*<div class="popup_foot"></div>%>
+
+<%#*</div>%>
+
+    </div>

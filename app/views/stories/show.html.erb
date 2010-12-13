@@ -1,0 +1,48 @@
+<p>
+  <b>Title:</b>
+  <%=h @story.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @story.description %>
+</p>
+
+<p>
+  <b>Story type:</b>
+  <%=h @story.story_type %>
+</p>
+
+<p>
+  <b>Current state:</b>
+  <%=h @story.current_state %>
+</p>
+
+<p>
+  <b>Requester:</b>
+  <%=h @story.requester_id %>
+</p>
+
+<p>
+  <b>Owner:</b>
+  <%=h @story.owner_id %>
+</p>
+
+<p>
+  <b>Estimate:</b>
+  <%=h @story.estimate %>
+</p>
+
+<p>
+  <b>Project:</b>
+  <%=h @story.project_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @story.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_story_path(@story) %> |
+<%= link_to 'Back', stories_path %>

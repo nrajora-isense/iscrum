@@ -1,0 +1,40 @@
+<h1>Listing projects</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Is archived</th>
+    <th>Profile content</th>
+    <th>Allow attachments</th>
+    <th>Start date</th>
+    <th>Time zone</th>
+    <th>Iteration length</th>
+    <th>Point scale</th>
+    <th>Initial velocity</th>
+    <th>Velocity scheme</th>
+    <th>Done iterations</th>
+  </tr>
+
+<% for project in @projects %>
+  <tr>
+    <td><%=h project.name %></td>
+    <td><%=h project.is_archived %></td>
+    <td><%=h project.profile_content %></td>
+    <td><%=h project.allow_attachments %></td>
+    <td><%=h project.start_date %></td>
+    <td><%=h project.time_zone %></td>
+    <td><%=h project.iteration_length %></td>
+    <td><%=h project.point_scale %></td>
+    <td><%=h project.initial_velocity %></td>
+    <td><%=h project.velocity_scheme %></td>
+    <td><%=h project.done_iterations %></td>
+    <td><%= link_to 'Show', project %></td>
+    <td><%= link_to 'Edit', edit_project_path(project) %></td>
+    <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New project', new_project_path %>

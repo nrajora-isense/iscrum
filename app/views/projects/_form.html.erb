@@ -1,0 +1,51 @@
+<%= form_for(@project) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :is_archived %><br />
+    <%= f.check_box :is_archived %>
+  </p>
+  <p>
+    <%= f.label :profile_content %><br />
+    <%= f.text_area :profile_content %>
+  </p>
+  <p>
+    <%= f.label :allow_attachments %><br />
+    <%= f.check_box :allow_attachments %>
+  </p>
+  <p>
+    <%= f.label :start_date %><br />
+    <%= f.date_select :start_date %>
+  </p>
+  <p>
+    <%= f.label :time_zone %><br />
+    <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.all %>
+  </p>
+  <p>
+    <%= f.label :iteration_length %><br />
+    <%= f.text_field :iteration_length %>
+  </p>
+  <p>
+    <%= f.label :point_scale %><br />
+    <%= f.text_field :point_scale %>
+  </p>
+  <p>
+    <%= f.label :initial_velocity %><br />
+    <%= f.text_field :initial_velocity %>
+  </p>
+  <p>
+    <%= f.label :velocity_scheme %><br />
+    <%= f.text_field :velocity_scheme %>
+  </p>
+  <p>
+    <%= f.label :done_iterations %><br />
+    <%= f.text_field :done_iterations %>
+  </p>
+  <p>
+    <%= f.submit "Submit" %>
+  </p>
+<% end %>
